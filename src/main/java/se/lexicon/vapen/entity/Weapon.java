@@ -2,6 +2,12 @@ package se.lexicon.vapen.entity;
 
 public class Weapon {
 
+    public Weapon(String name, String model, String version) {
+        this.name = name;
+        this.model = model;
+        this.version = version;
+    }
+
     private String name;
     private String model;
     private String version;
