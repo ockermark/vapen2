@@ -1,5 +1,6 @@
 package se.lexicon.vapen.entity;
 
+@Entity
 public class Manufacturer {
 
     public Manufacturer(String name, String contactInformation) {

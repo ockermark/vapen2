@@ -1,5 +1,6 @@
 package se.lexicon.vapen.entity;
 
+@Entity
 public class Weapon {
 
     public Weapon(String name, String model, String version) {
