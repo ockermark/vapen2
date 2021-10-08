@@ -1,5 +1,7 @@
 package se.lexicon.vapen.entity;
 
+import javax.persistence.Entity;
+
 @Entity
 public class Manufacturer {
 
@@ -7,7 +9,7 @@ public class Manufacturer {
         this.name = name;
         this.contactInformation = contactInformation;
     }
-
+    private int id;
     private String name;
     private String contactInformation;
 
