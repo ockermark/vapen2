@@ -9,15 +9,19 @@ import javax.persistence.GenerationType;
 @Entity
 public class Manufacturer {
 
-    public Manufacturer(String name, String contactInformation) {
-        this.name = name;
-        this.contactInformation = contactInformation;
-    }
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String contactInformation;
+
+
+
+    public Manufacturer(int id, String name, String contactInformation) {
+        this.id = id;
+        this.name = name;
+        this.contactInformation = contactInformation;
+    }
 
     public String getName() {
         return name;
