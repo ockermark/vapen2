@@ -1,10 +1,11 @@
 package se.lexicon.vapen.entity;
 
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Manufacturer {
@@ -15,12 +16,21 @@ public class Manufacturer {
     private String name;
     private String contactInformation;
 
-
+    public Manufacturer() {
+    }
 
     public Manufacturer(int id, String name, String contactInformation) {
         this.id = id;
         this.name = name;
         this.contactInformation = contactInformation;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
