@@ -16,7 +16,6 @@ public class ManufactoryRepositoryTest {
 
     @Autowired
     ManufacturerRepository testObject;
-
     Manufacturer createdManufactorer;
 
     @BeforeEach
@@ -30,16 +29,16 @@ public class ManufactoryRepositoryTest {
 
     @Test
     public void test_findbyid_object() {
-        Optional<Manufacturer> manufacturerOprional = testObject.findById(1);
-        Assertions.assertNotNull(manufacturerOprional.get());
+        Optional<Manufacturer> manufacturerOptional = testObject.findById(1);
+        Assertions.assertNotNull(manufacturerOptional.get());
     }
 
     @Test
     public void test_delete_object() {
 
         testObject.delete(createdManufactorer);
-        Optional<Manufacturer> manufacturerOprional = testObject.findById(1);
-        Assertions.assertFalse(manufacturerOprional.isPresent());
+        Optional<Manufacturer> manufacturerOptional = testObject.findById(1);
+        Assertions.assertFalse(manufacturerOptional.isPresent());
 
     }
 
