@@ -1,9 +1,8 @@
 package se.lexicon.vapen.exception;
 
-public class ArgumentException {
-
-
-    public ArgumentException extends RuntimeException{
+public class ArgumentException extends RuntimeException {
+    public ArgumentException(String message) {
         super(message);
     }
+
 }
