@@ -29,12 +29,12 @@ public VapenServiceImpl(ManufacturerRepository manufacturerRepository, WeaponRep
     }
 
     @Override
-    public WeaponDto buildGun(WeaponDto dto) {
+    public ManufacturerDto buildGun(WeaponDto dto) {
 
         Weapon weaponEntity = modelMapper.map(dto.getName(),Weapon.class); //class?
-        Weapon createWeaon = weaponRepository.save(weaponEntity);
+        Weapon createWeapon = weaponRepository.save(weaponEntity);
         Manufacturer manufacturerEntity = modelMapper.map(dto, Manufacturer.class);
-        manufacturerEntity.setName(createWeaon);
+        manufacturerEntity.setName(createWeapon);
         Manufacturer createManufacturer = manufacturerRepository.save(manufacturerEntity);
 
         return modelMapper.map(createManufacturer, ManufacturerDto.class);

@@ -4,7 +4,7 @@ import se.lexicon.vapen.dto.ManufacturerDto;
 import se.lexicon.vapen.dto.WeaponDto;
 
 public interface VapenService {
-    WeaponDto buildGun(WeaponDto dto);
+    ManufacturerDto buildGun(WeaponDto dto);
 
     void addGun(String name,String model, String version);
 
