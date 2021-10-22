@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.lexicon.vapen.dto.ManufacturerDto;
+import se.lexicon.vapen.dto.WeaponDto;
 import se.lexicon.vapen.repository.ManufacturerRepository;
 import se.lexicon.vapen.repository.WeaponRepository;
 
@@ -24,10 +25,21 @@ public VapenServiceImpl(ManufacturerRepository manufacturerRepository, WeaponRep
     this.weaponRepository = weaponRepository;
     this.modelMapper = modelMapper;
     }
-@Override
-public ManufacturerDto
 
+    @Override
+    public WeaponDto buildGun(WeaponDto dto) {
+        return null;
+    }
 
+    @Override
+    public void addGun(String name, String model, String version) {
+
+    }
+
+    @Override
+    public void scrapGun(int id, String name, String model, String version) {
+
+    }
 }
 
 
