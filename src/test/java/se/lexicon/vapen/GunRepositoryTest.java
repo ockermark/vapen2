@@ -5,42 +5,42 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import se.lexicon.vapen.entity.Weapon;
-import se.lexicon.vapen.repository.WeaponRepository;
+import se.lexicon.vapen.entity.Gun;
+import se.lexicon.vapen.repository.GunRepository;
 
 import java.util.Optional;
 
 @DataJpaTest
-public class WeaponRepositoryTest {
+public class GunRepositoryTest {
 
 
 
     @Autowired
-        WeaponRepository testObject;
-        Weapon createdWeapon;
+    GunRepository testObject;
+        Gun createdGun;
 
     @BeforeEach
     public void setup() {
-        Weapon weapon = new Weapon();
-        weapon.setName("Glock");
-        weapon.setModel("17");
-        weapon.setVersion("gen5");
-        createdWeapon = testObject.save(weapon);
-        Assertions.assertEquals("Glock", createdWeapon.getName());
+        Gun gun = new Gun();
+        gun.setName("Glock");
+        gun.setModel("17");
+        gun.setVersion("gen5");
+        createdGun = testObject.save(gun);
+        Assertions.assertEquals("Glock", createdGun.getName());
     }
 
 
     @Test
     public void test_findbyid_object() {
-        Optional<Weapon> weaponOptional = testObject.findById(1);
+        Optional<Gun> weaponOptional = testObject.findById(1);
         Assertions.assertNotNull(weaponOptional.get());
     }
 
     @Test
     public void test_delete_Object() {
 
-        testObject.delete(createdWeapon);
-        Optional<Weapon> weaponOptional = testObject.findById(1);
+        testObject.delete(createdGun);
+        Optional<Gun> weaponOptional = testObject.findById(1);
         Assertions.assertFalse(weaponOptional.isPresent());
 
     }

@@ -12,7 +12,7 @@ import se.lexicon.vapen.repository.ManufacturerRepository;
 import java.util.Optional;
 
 @DataJpaTest
-public class ManufactoryRepositoryTest {
+public class ManufacturerRepositoryTest {
 
     @Autowired
     ManufacturerRepository testObject;

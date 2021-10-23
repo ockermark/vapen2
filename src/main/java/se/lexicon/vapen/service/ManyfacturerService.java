@@ -2,7 +2,7 @@ package se.lexicon.vapen.service;
 
 import se.lexicon.vapen.dto.ManufacturerDto;
 
-public interface ManyfactoryService {
+public interface ManyfacturerService {
     ManufacturerDto createGun(ManufacturerDto dto);
 
     void manufact(String name, String contactInformation);

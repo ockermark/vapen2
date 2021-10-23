@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Weapon {
+public class Gun {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
@@ -14,17 +14,17 @@ public class Weapon {
     private String model;
     private String version;
 
-    public Weapon() {
+    public Gun() {
     }
 
-    public Weapon(int id, String name, String model, String version) {
+    public Gun(int id, String name, String model, String version) {
         this.id = id;
         this.name = name;
         this.model = model;
         this.version = version;
     }
 
-    public Weapon(String name, String model, String version) {
+    public Gun(String name, String model, String version) {
         this.name = name;
         this.model = model;
         this.version = version;

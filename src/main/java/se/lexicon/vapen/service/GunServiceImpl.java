@@ -5,36 +5,36 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.lexicon.vapen.dto.ManufacturerDto;
-import se.lexicon.vapen.dto.WeaponDto;
+import se.lexicon.vapen.dto.GunDto;
 import se.lexicon.vapen.entity.Manufacturer;
-import se.lexicon.vapen.entity.Weapon;
+import se.lexicon.vapen.entity.Gun;
 import se.lexicon.vapen.repository.ManufacturerRepository;
-import se.lexicon.vapen.repository.WeaponRepository;
+import se.lexicon.vapen.repository.GunRepository;
 
 @Service
-public class VapenServiceImpl implements VapenService {
+public class GunServiceImpl implements GunService {
 
 
     ManufacturerRepository manufacturerRepository;
-    WeaponRepository weaponRepository;
+    GunRepository gunRepository;
     ModelMapper modelMapper;
 
 
 
 @Autowired
-public VapenServiceImpl(ManufacturerRepository manufacturerRepository, WeaponRepository weaponRepository, ModelMapper modelMapper){
+public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunRepository gunRepository, ModelMapper modelMapper){
     this.manufacturerRepository = manufacturerRepository;
-    this.weaponRepository = weaponRepository;
+    this.gunRepository = gunRepository;
     this.modelMapper = modelMapper;
     }
 
     @Override
-    public ManufacturerDto buildGun(WeaponDto dto) {
+    public ManufacturerDto buildGun(GunDto dto) {
 
-        Weapon weaponEntity = modelMapper.map(dto.getName(),Weapon.class); //class?
-        Weapon createWeapon = weaponRepository.save(weaponEntity);
+        Gun gunEntity = modelMapper.map(dto.getName(), Gun.class); //class?
+        Gun createGun = gunRepository.save(gunEntity);
         Manufacturer manufacturerEntity = modelMapper.map(dto, Manufacturer.class);
-        manufacturerEntity.setName(createWeapon);
+        manufacturerEntity.setName(createGun);
         Manufacturer createManufacturer = manufacturerRepository.save(manufacturerEntity);
 
         return modelMapper.map(createManufacturer, ManufacturerDto.class);

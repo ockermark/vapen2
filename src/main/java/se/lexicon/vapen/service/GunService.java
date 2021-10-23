@@ -1,10 +1,10 @@
 package se.lexicon.vapen.service;
 
 import se.lexicon.vapen.dto.ManufacturerDto;
-import se.lexicon.vapen.dto.WeaponDto;
+import se.lexicon.vapen.dto.GunDto;
 
-public interface VapenService {
-    ManufacturerDto buildGun(WeaponDto dto);
+public interface GunService {
+    ManufacturerDto buildGun(GunDto dto);
 
     void addGun(String name,String model, String version);
 
