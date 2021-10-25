@@ -11,6 +11,9 @@ import se.lexicon.vapen.entity.Gun;
 import se.lexicon.vapen.repository.ManufacturerRepository;
 import se.lexicon.vapen.repository.GunRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class GunServiceImpl implements GunService {
 
@@ -39,7 +42,13 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
 
         return modelMapper.map(createManufacturer, ManufacturerDto.class);
     }
+    @Override
+    public List<Gun> advanceSearch(String name, String model, String version) {
+        List<Gun> result = new ArrayList<>();
 
+        return result;
+
+    }
 
 
 
