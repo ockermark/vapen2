@@ -1,11 +1,13 @@
 package se.lexicon.vapen.service;
 
-
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import se.lexicon.vapen.dto.ManufacturerDto;
 import se.lexicon.vapen.entity.Manufacturer;
 
+import se.lexicon.vapen.exception.ArgumentException;
 import se.lexicon.vapen.repository.ManufacturerRepository;
 
 import java.util.ArrayList;
@@ -22,7 +24,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public void addManufacturer(String name, String contactInformation) {
+    public ManufacturerDto createManufacturer(ManufacturerDto dto) {
+        if (dto == null) throw new ArgumentException("ManufacturerDto cannot be null");
+
+        Manufacturer manufacturerEntity = modelMapper.map(dto.getClass(), Manufacturer.class);
+        Manufacturer createdManufacturer = manufacturerRepository.save(manufacturerEntity);
 
 
     }
@@ -37,7 +43,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         List<Manufacturer> result = new ArrayList<>();
 
         if (name != null) {
-            result = ManufacturerRepository.findByName (name);
+            result = manufacturerRepository.findByName (name);
         }
 
         return result;

@@ -6,7 +6,8 @@ import se.lexicon.vapen.entity.Manufacturer;
 import java.util.List;
 
 public interface ManufacturerService {
-    // ManufacturerDto createMan(ManufacturerDto dto);
+
+    ManufacturerDto
 
     void addManufacturer(String name, String contactInformation);
 
