@@ -24,11 +24,13 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public ManufacturerDto createManufacturer(ManufacturerDto dto) {
+    public ManufacturerDto addManufacturer(ManufacturerDto dto) {
         if (dto == null) throw new ArgumentException("ManufacturerDto cannot be null");
 
         Manufacturer manufacturerEntity = modelMapper.map(dto.getClass(), Manufacturer.class);
         Manufacturer createdManufacturer = manufacturerRepository.save(manufacturerEntity);
+
+        return modelMapper.map(createdManufacturer, ManufacturerDto.class);
 
 
     }

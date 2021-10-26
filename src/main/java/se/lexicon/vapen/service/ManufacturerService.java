@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface ManufacturerService {
 
-    ManufacturerDto
+    ManufacturerDto addManufacturer(ManufacturerDto dto);
 
     void addManufacturer(String name, String contactInformation);
 
-    void deleteManufacturer(Integer id );
+    void deleteManufacturer(Integer id);
 
     List<Manufacturer> searchManufacturer(String name);
 
