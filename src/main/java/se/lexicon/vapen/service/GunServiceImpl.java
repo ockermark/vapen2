@@ -4,6 +4,7 @@ package se.lexicon.vapen.service;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import se.lexicon.vapen.dto.ManufacturerDto;
 import se.lexicon.vapen.dto.GunDto;
 import se.lexicon.vapen.entity.Manufacturer;
@@ -60,6 +61,18 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     @Override
     public void scrapGun(int id, String name, String model, String version) {
 
+    }
+
+    @Override
+    public List<Gun> advanceSearch(String name, String model, String version) {
+        List<Gun> result = new ArrayList<>();
+
+        if (name != null && model != null) {
+            result = gunRepository.findByNameAndModel(name, model);
+        } else if (version != null) {
+            result = gunRepository.findGunbyVersion(version);
+        }
+        return result;
     }
 }
 
