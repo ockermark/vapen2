@@ -6,11 +6,12 @@ import se.lexicon.vapen.entity.Manufacturer;
 import java.util.List;
 
 public interface ManufacturerService {
-    // ManufacturerDto createMan(ManufacturerDto dto);
+
+    ManufacturerDto addManufacturer(ManufacturerDto dto);
 
     void addManufacturer(String name, String contactInformation);
 
-    void deleteManufacturer(Integer id );
+    void deleteManufacturer(Integer id);
 
     List<Manufacturer> searchManufacturer(String name);
 
