@@ -16,8 +16,8 @@ public interface GunService {
 
     void addGun(String name,String model, String version);
 
-    void  scrapGun(int id, String name, String model, String version);
-//do i need to add ind id?
+    void scrapGun(int id, String name, String model, String version);
+
 
 
 }
