@@ -34,7 +34,7 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     @Override
     public ManufacturerDto buildGun(GunDto dto) {
 
-        Gun gunEntity = modelMapper.map(dto.getName(), Gun.class); //class?
+        Gun gunEntity = modelMapper.map(dto.getName(), Gun.class);
         Gun createGun = gunRepository.save(gunEntity);
         Manufacturer manufacturerEntity = modelMapper.map(dto, Manufacturer.class);
         manufacturerEntity.setName(createGun);
