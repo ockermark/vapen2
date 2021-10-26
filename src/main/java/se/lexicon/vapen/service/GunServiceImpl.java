@@ -8,6 +8,7 @@ import se.lexicon.vapen.dto.ManufacturerDto;
 import se.lexicon.vapen.dto.GunDto;
 import se.lexicon.vapen.entity.Manufacturer;
 import se.lexicon.vapen.entity.Gun;
+import se.lexicon.vapen.exception.ArgumentException;
 import se.lexicon.vapen.repository.ManufacturerRepository;
 import se.lexicon.vapen.repository.GunRepository;
 
@@ -32,15 +33,14 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     }
 
     @Override
-    public ManufacturerDto buildGun(GunDto dto) {
+    public GunDto buildGun(GunDto dto) {
+        if (dto == null) throw  new ArgumentException("Gun shouldn't return null");
 
-        Gun gunEntity = modelMapper.map(dto.getName(), Gun.class); //class?
+        Gun gunEntity = modelMapper.map(dto, Gun.class);
         Gun createGun = gunRepository.save(gunEntity);
-        Manufacturer manufacturerEntity = modelMapper.map(dto, Manufacturer.class);
-        manufacturerEntity.setName(createGun);
-        Manufacturer createManufacturer = manufacturerRepository.save(manufacturerEntity);
+        GunDto createDto = modelMapper.map(createGun, GunDto.class);
 
-        return modelMapper.map(createManufacturer, ManufacturerDto.class);
+        return createDto;
     }
     @Override
     public List<Gun> advanceSearch(String name, String model, String version) {

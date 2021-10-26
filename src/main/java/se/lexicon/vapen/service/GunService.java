@@ -7,11 +7,11 @@ import se.lexicon.vapen.entity.Gun;
 import java.util.List;
 
 public interface GunService {
-    ManufacturerDto buildGun(GunDto dto);
+    GunDto buildGun(GunDto dto);
 
-    Gun create(Gun gun);
 
-    List<Gun> advanceSearch(String name, String model, String version);
+
+   // List<Gun> advanceSearch(String name, String model, String version);
 
 
     void addGun(String name,String model, String version);
