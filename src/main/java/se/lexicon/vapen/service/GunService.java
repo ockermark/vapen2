@@ -1,8 +1,12 @@
 package se.lexicon.vapen.service;
+import se.lexicon.vapen.dto.GunDto;
+import se.lexicon.vapen.dto.ManufacturerDto;
 import se.lexicon.vapen.entity.Gun;
 import java.util.List;
 
 public interface GunService {
+
+    ManufacturerDto saveGun(GunDto dto);
 
     List<Gun> findAll();
 

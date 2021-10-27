@@ -33,7 +33,7 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     }
 
     @Override
-    public ManufacturerDto buildGun(GunDto dto) {
+    public ManufacturerDto saveGun(GunDto dto) {
 
         Gun gunEntity = modelMapper.map(dto.getName(), Gun.class); //class?
         Gun saveGun = gunRepository.save(gunEntity);
