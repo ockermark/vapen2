@@ -37,10 +37,12 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     }
 
-  //  @Override
-  //  public Manufacturer addManufacturer(String name, String contactInformation) {
-  //      return null;
-  //  }
+
+    @Override
+    public Manufacturer saveManufacturer (Manufacturer manufacturer) {
+        Manufacturer result = manufacturerRepository.save(manufacturer);
+        return result;
+    }
 
     @Override
     public void deleteManufacturer(Integer id) {

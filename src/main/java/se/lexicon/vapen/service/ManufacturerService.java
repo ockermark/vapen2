@@ -7,12 +7,13 @@ import java.util.List;
 
 public interface ManufacturerService {
 
-    ManufacturerDto addManufacturer(ManufacturerDto dto);
+    ManufacturerDto addManufacturer (ManufacturerDto dto);
 
-    // Manufacturer addManufacturer(String name, String contactInformation);
-    void deleteManufacturer(Integer id);
+    Manufacturer saveManufacturer (Manufacturer manufacturer);
 
-    Manufacturer findByName(String name);
+    void deleteManufacturer (Integer id);
+
+    Manufacturer findByName (String name);
     Manufacturer findById (Integer id);
 
     List<Manufacturer> findAll();

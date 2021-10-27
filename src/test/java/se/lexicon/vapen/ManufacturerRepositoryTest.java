@@ -16,15 +16,15 @@ public class ManufacturerRepositoryTest {
 
     @Autowired
     ManufacturerRepository testObject;
-    Manufacturer createdManufactorer;
+    Manufacturer createdManufacturer;
 
     @BeforeEach
     public void setUp() {
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setName("Glock");
         manufacturer.setContactInformation("glockinfo@info.de");
-        createdManufactorer = testObject.save(manufacturer);
-        Assertions.assertEquals("Glock", createdManufactorer.getName());
+        createdManufacturer = testObject.save(manufacturer);
+        Assertions.assertEquals("Glock", createdManufacturer.getName());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ManufacturerRepositoryTest {
     @Test
     public void test_delete_object() {
 
-        testObject.delete(createdManufactorer);
+        testObject.delete(createdManufacturer);
         Optional<Manufacturer> manufacturerOptional = testObject.findById(1);
         Assertions.assertFalse(manufacturerOptional.isPresent());
 
