@@ -9,5 +9,8 @@ import se.lexicon.vapen.entity.Manufacturer;
 import java.util.List;
 
 public interface ManufacturerRepository extends CrudRepository<Manufacturer, Integer> {
-      List<Manufacturer> findByName(String name);
+
+      Manufacturer findByName(String name);
+      List<Manufacturer> findAll ();
+
 }

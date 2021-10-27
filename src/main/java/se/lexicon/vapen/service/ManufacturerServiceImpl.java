@@ -12,6 +12,7 @@ import se.lexicon.vapen.repository.ManufacturerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
@@ -34,22 +35,44 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
         return modelMapper.map(createdManufacturer, ManufacturerDto.class);
 
-
     }
+
+  //  @Override
+  //  public Manufacturer addManufacturer(String name, String contactInformation) {
+  //      return null;
+  //  }
 
     @Override
     public void deleteManufacturer(Integer id) {
+        Optional<Manufacturer> optionalManufacturer = manufacturerRepository.findById(id);
+        if (optionalManufacturer.isPresent()) {
+            manufacturerRepository.delete(optionalManufacturer.get());
+        }
 
     }
 
     @Override
-    public List<Manufacturer> searchManufacturer(String name) {
-        List<Manufacturer> result = new ArrayList<>();
-
-        if (name != null) {
-            result = manufacturerRepository.findByName (name);
+    public Manufacturer findByName(String name) {
+        if (name != null){
+            Manufacturer result = manufacturerRepository.findByName(name);
+            return result;
         }
+        else throw new ArgumentException("manufacturerName cannot be null");
+    }
 
-        return result;
+    @Override
+    public Manufacturer findById(Integer id) {
+        Optional<Manufacturer> optionalManufacturer = manufacturerRepository.findById(id);
+        if (optionalManufacturer.isPresent()){
+            return optionalManufacturer.get();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Manufacturer> findAll() {
+        List<Manufacturer> manufacturerList = new ArrayList<>();
+        manufacturerRepository.findAll().iterator().forEachRemaining(manufacturerList::add);
+        return manufacturerList;
     }
 }

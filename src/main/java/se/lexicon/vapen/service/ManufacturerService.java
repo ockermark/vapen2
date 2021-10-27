@@ -9,11 +9,13 @@ public interface ManufacturerService {
 
     ManufacturerDto addManufacturer(ManufacturerDto dto);
 
-    void addManufacturer(String name, String contactInformation);
-
+    // Manufacturer addManufacturer(String name, String contactInformation);
     void deleteManufacturer(Integer id);
 
-    List<Manufacturer> searchManufacturer(String name);
+    Manufacturer findByName(String name);
+    Manufacturer findById (Integer id);
+
+    List<Manufacturer> findAll();
 
 
 }
