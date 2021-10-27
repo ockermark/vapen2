@@ -18,5 +18,9 @@ public interface GunRepository extends CrudRepository <Gun,  Integer>{
 
     List<Gun> findByNameAndModel(String name, String model);
 
+    Gun findGunByName(String name);
+
+    Gun findGunByModel(String model);
 }
+
 

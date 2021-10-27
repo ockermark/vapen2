@@ -16,7 +16,6 @@ public interface GunService {
 
     List<Gun> advanceSearch(String name, String model, String version);
 
-    void delete(String name);
 
     void delete(int id);
 
