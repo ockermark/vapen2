@@ -17,17 +17,19 @@ import java.util.List;
 public class ManufacturerServiceImpl implements ManufacturerService {
 
     ManufacturerRepository manufacturerRepository;
+    ModelMapper modelMapper;
 
     @Autowired
     public ManufacturerServiceImpl(ManufacturerRepository manufacturerRepository) {
         this.manufacturerRepository = manufacturerRepository ;
+
     }
 
     @Override
     public ManufacturerDto addManufacturer(ManufacturerDto dto) {
         if (dto == null) throw new ArgumentException("ManufacturerDto cannot be null");
 
-        Manufacturer manufacturerEntity = modelMapper.map(dto.getClass(), Manufacturer.class);
+        Manufacturer manufacturerEntity = modelMapper.map(dto, Manufacturer.class);
         Manufacturer createdManufacturer = manufacturerRepository.save(manufacturerEntity);
 
         return modelMapper.map(createdManufacturer, ManufacturerDto.class);
