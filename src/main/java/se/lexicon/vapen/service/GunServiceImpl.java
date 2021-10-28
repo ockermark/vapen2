@@ -4,9 +4,7 @@ package se.lexicon.vapen.service;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.lexicon.vapen.dto.ManufacturerDto;
 import se.lexicon.vapen.dto.GunDto;
-import se.lexicon.vapen.entity.Manufacturer;
 import se.lexicon.vapen.entity.Gun;
 import se.lexicon.vapen.repository.ManufacturerRepository;
 import se.lexicon.vapen.repository.GunRepository;
@@ -33,14 +31,12 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     }
 
     @Override
-    public ManufacturerDto saveGun(GunDto dto) {
+    public GunDto saveGun(GunDto dto) {
 
-        Gun gunEntity = modelMapper.map(dto.getName(), Gun.class); //class?
-        Gun saveGun = gunRepository.save(gunEntity);
-        Manufacturer manufacturerEntity = modelMapper.map(dto, Manufacturer.class);
-        Manufacturer createManufacturer = manufacturerRepository.save(manufacturerEntity);
+        GunDto gunEntity = modelMapper.map(dto, Gun.class); //class?
+        GunDto saveGun = gunRepository.save(gunEntity);
 
-        return modelMapper.map(createManufacturer, ManufacturerDto.class);
+        return modelMapper.map(saveGun, GunDto.class);
     }
 
 
@@ -48,15 +44,15 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
 
 
     @Override
-    public List<Gun> findAll() {
+    public List<GunDto> findAll() {
         List<Gun>list = new ArrayList<>();
         gunRepository.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
 
     @Override
-    public Gun findById(int id) {
-        Optional<Gun> optionalGun = gunRepository.findById(id);
+    public GunDto findById(int id) {
+        Optional<GunDto> optionalGun = gunRepository.findById(id);
         if (optionalGun.isPresent()){
             return optionalGun.get();
         }
@@ -64,26 +60,26 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     }
 
     @Override
-    public Gun findByName(String name) {
-        Gun result = gunRepository.findGunByName(name);
+    public GunDto findByName(String name) {
+        GunDto result = gunRepository.findGunByName(name);
         return result;
     }
 
     @Override
-    public Gun findByModel(String model) {
-        Gun result = gunRepository.findGunByModel(model);
+    public GunDto findByModel(String model) {
+        GunDto result = gunRepository.findGunByModel(model);
 
         return result;
     }
 
     @Override
-    public Gun findByNameAndVersion(String name, String version) {
+    public GunDto findByNameAndVersion(String name, String version) {
         return null;
     }
 
     @Override
-    public List<Gun> advanceSearch(String name, String model, String version) {
-        List<Gun> result = new ArrayList<>();
+    public List<GunDto> advanceSearch(String name, String model, String version) {
+        List<GunDto> result = new ArrayList<>();
 
         if (name != null && model != null) {
             result = gunRepository.findByNameAndModel(name, model);
@@ -102,8 +98,8 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     }
 
     @Override
-    public Gun saveGun(Gun gun){
-    Gun result = gunRepository.save(gun);
+    public GunDto saveGun(GunDto gunDto){
+    GunDto result = gunRepository.save(gunDto);
     return result;
     }
 }
