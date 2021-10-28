@@ -1,26 +1,27 @@
 package se.lexicon.vapen.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import se.lexicon.vapen.dto.GunDto;
 import se.lexicon.vapen.entity.Gun;
 
 import java.util.List;
 
 public interface GunRepository extends CrudRepository <Gun,  Integer>{
 
-    List<Gun> findByName(String name);
+    List<GunDto> findByName(String name);
 
     List<Gun> findByModel(String model);
 
 
 
 
-    List<Gun> findGunbyVersion(String version);
+    List<GunDto> findGunbyVersion(String version);
 
-    List<Gun> findByNameAndModel(String name, String model);
+    List<GunDto> findByNameAndModel(String name, String model);
 
-    Gun findGunByName(String name);
+    GunDto findGunByName(String name);
 
-    Gun findGunByModel(String model);
+    GunDto findGunByModel(String model);
 }
 
 
