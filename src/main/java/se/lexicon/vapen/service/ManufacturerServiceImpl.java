@@ -1,6 +1,7 @@
 package se.lexicon.vapen.service;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import se.lexicon.vapen.repository.ManufacturerRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
@@ -63,9 +65,21 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public List<ManufacturerDto> findAll () {
-        List<ManufacturerDto> manufacturerList = new ArrayList<>();
+        List<Manufacturer> manufacturerList = new ArrayList<>();
+        List<ManufacturerDto> manufacturerDtoList = new ArrayList<>();
+
         manufacturerRepository.findAll().iterator().forEachRemaining(manufacturerList::add);
-        return modelMapper.map(manufacturerList, List<ManufacturerDto>.class>);
+
+        //int index=0;
+        //while (manufacturerList.size() > index){
+        //   manufacturerDtoList.set( index, modelMapper.map(manufacturerList, ManufacturerDto.class));
+        //}
+
+        for (Manufacturer manufacturer:manufacturerList){
+        manufacturerDtoList.set(manufacturerList.indexOf(this), modelMapper.map(manufacturer, ManufacturerDto.class));
+        }
+
+        return manufacturerDtoList;
     }
 
     // old stuff below *****
