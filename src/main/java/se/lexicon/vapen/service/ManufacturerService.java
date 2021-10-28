@@ -15,6 +15,7 @@ public interface ManufacturerService {
 
     Manufacturer findByName (String name);
     Manufacturer findById (Integer id);
+    ManufacturerDto findByIdNew (Integer id);
 
     List<Manufacturer> findAll();
 

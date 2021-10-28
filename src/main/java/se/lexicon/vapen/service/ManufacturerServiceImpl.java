@@ -31,9 +31,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         if (dto == null) throw new ArgumentException("ManufacturerDto cannot be null");
 
         Manufacturer manufacturerEntity = modelMapper.map(dto, Manufacturer.class);
-        Manufacturer createdManufacturer = manufacturerRepository.save(manufacturerEntity);
+        Manufacturer saveManufacturer = manufacturerRepository.save(manufacturerEntity);
 
-        return modelMapper.map(createdManufacturer, ManufacturerDto.class);
+        //Manufacturer createdManufacturer = manufacturerRepository.save(manufacturerEntity);
+
+        return modelMapper.map(saveManufacturer, ManufacturerDto.class);
 
     }
 
@@ -67,6 +69,15 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         Optional<Manufacturer> optionalManufacturer = manufacturerRepository.findById(id);
         if (optionalManufacturer.isPresent()){
             return optionalManufacturer.get();
+        }
+        return null;
+    }
+
+    @Override
+    public ManufacturerDto findByIdNew(Integer id) {
+        Optional<Manufacturer> optionalManufacturer = manufacturerRepository.findById(id);
+        if (optionalManufacturer.isPresent()){
+           return modelMapper.map(optionalManufacturer.get(),ManufacturerDto.class);
         }
         return null;
     }
