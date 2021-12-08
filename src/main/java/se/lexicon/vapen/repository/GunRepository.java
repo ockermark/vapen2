@@ -10,7 +10,7 @@ public interface GunRepository extends CrudRepository <Gun,  Integer>{
 
     List<GunDto> findByName(String name);
 
-    List<Gun> findByModel(String model);
+    List<GunDto> findByModel(String model);
 
 
 

@@ -33,7 +33,7 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
     @Override
     public GunDto saveGun(GunDto dto) {
 
-        GunDto gunEntity = modelMapper.map(dto, Gun.class); //class?
+        GunDto gunEntity = modelMapper.map(dto, GunDto.class); //class?
         GunDto saveGun = gunRepository.save(gunEntity);
 
         return modelMapper.map(saveGun, GunDto.class);
@@ -45,14 +45,14 @@ public GunServiceImpl(ManufacturerRepository manufacturerRepository, GunReposito
 
     @Override
     public List<GunDto> findAll() {
-        List<Gun>list = new ArrayList<>();
+        List<GunDto>list = new ArrayList<>();
         gunRepository.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
 
     @Override
     public GunDto findById(int id) {
-        Optional<GunDto> optionalGun = gunRepository.findById(id);
+        Optional<Gun> optionalGun = gunRepository.findById(id);
         if (optionalGun.isPresent()){
             return optionalGun.get();
         }
