@@ -7,17 +7,25 @@ import java.util.List;
 
 public interface ManufacturerService {
 
-    ManufacturerDto addManufacturer (ManufacturerDto dto);
-
-    Manufacturer saveManufacturer (Manufacturer manufacturer);
-
+    ManufacturerDto saveManufacturer (ManufacturerDto dto);
     void deleteManufacturer (Integer id);
 
-    Manufacturer findByName (String name);
-    Manufacturer findById (Integer id);
-    ManufacturerDto findByIdNew (Integer id);
+    ManufacturerDto findByName (String name);
+    ManufacturerDto findById (Integer id);
 
-    List<Manufacturer> findAll();
+    List<ManufacturerDto> findAll();
+
+
+
+    // old stuff below ***
+
+    Manufacturer saveManufacturerx (Manufacturer manufacturer);
+    void deleteManufacturerx (Integer id);
+
+    Manufacturer findByNamex (String name);
+    Manufacturer findByIdx (Integer id);
+
+    List<Manufacturer> findAllx();
 
 
 }
